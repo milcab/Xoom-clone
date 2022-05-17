@@ -5,6 +5,7 @@ module.exports = {
   ],
   theme: {
     extend: {
+      // thank you internet http://colormind.io/template/paper-dashboard/
       colors: {
         "blue-dark": "#2b3e68",
         "blue-medium": "#577bbe",
