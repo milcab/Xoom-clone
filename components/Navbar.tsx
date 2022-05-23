@@ -1,5 +1,6 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment } from "react";
+import Link from "next/link";
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { ChevronDownIcon } from "@heroicons/react/solid";
@@ -11,8 +12,8 @@ const Logo = () => (
     <a href="#">
       <span className="sr-only">Workflow</span>
       <img
-        className="h-8 w-auto sm:h-10"
-        src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+        className="h-8 w-auto sm:h-16"
+        src="/logos/white_logo_transparent_background.png"
         alt=""
       />
     </a>
@@ -140,8 +141,8 @@ const MobileMenu = () => (
           <div className="flex items-center justify-between">
             <div>
               <img
-                className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                className="h-10 w-auto"
+                src="/logos/white_logo_transparent_background.png"
                 alt="Workflow"
               />
             </div>
@@ -197,7 +198,7 @@ const RightMenu = () => (
   <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
     <a
       href="#"
-      className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
+      className="whitespace-nowrap text-base font-medium text-white hover:text-gold"
     >
       Sign in
     </a>
