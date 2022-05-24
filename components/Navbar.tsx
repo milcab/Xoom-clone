@@ -8,20 +8,24 @@ import clsx from "clsx";
 import COUNTRIES from "../constants/countries";
 import useFirebaseAuth from "../firebase/hooks";
 
-const Logo = () => (
-  <div className="flex justify-start lg:w-0 lg:flex-1">
-    <Link href="/">
-      <a>
-        <span className="sr-only">Home</span>
-        <img
-          className="h-8 w-auto sm:h-16"
-          src="/logos/white_logo_transparent_background.png"
-          alt=""
-        />
-      </a>
-    </Link>
-  </div>
-);
+const Logo = () => {
+  const { authUser } = useFirebaseAuth();
+  const homeURL = authUser ? "/home" : "/";
+  return (
+    <div className="flex justify-start lg:w-0 lg:flex-1">
+      <Link href={homeURL}>
+        <a>
+          <span className="sr-only">Home</span>
+          <img
+            className="h-8 w-auto sm:h-16"
+            src="/logos/white_logo_transparent_background.png"
+            alt=""
+          />
+        </a>
+      </Link>
+    </div>
+  );
+};
 
 const MenuButton = () => (
   <div className="-mr-2 -my-2 md:hidden">
@@ -127,6 +131,8 @@ const SubMenuOptions = () => (
 
 const MobileMenu = () => {
   const { authUser, signOut } = useFirebaseAuth();
+  const homeURL = authUser ? "/home" : "/";
+
   return (
     <Transition
       as={Fragment}
@@ -145,7 +151,7 @@ const MobileMenu = () => {
           <div className="pt-5 pb-6 px-5">
             <div className="flex items-center justify-between">
               <div>
-                <Link href="/">
+                <Link href={homeURL}>
                   <img
                     className="h-10 w-auto"
                     src="/logos/white_logo_transparent_background.png"
