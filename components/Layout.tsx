@@ -12,7 +12,7 @@ export default function ({ children }: LayoutProps) {
     <div className="bg-white min-h-screen">
       <Navbar />
       <main className={`${outterPadding}`}>{children}</main>
-      <footer className={`${outterPadding}`}>footer goes here</footer>
+      <footer className={`${outterPadding}`}></footer>
     </div>
   );
 }
