@@ -9,7 +9,7 @@ type LayoutProps = {
 export default function ({ children }: LayoutProps) {
   const outterPadding = "max-w-7xl mx-auto px-4 sm:px-6";
   return (
-    <div className="bg-white h-screen">
+    <div className="bg-white min-h-screen">
       <Navbar />
       <main className={`${outterPadding}`}>{children}</main>
       <footer className={`${outterPadding}`}>footer goes here</footer>

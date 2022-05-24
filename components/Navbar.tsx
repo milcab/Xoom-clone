@@ -1,6 +1,6 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment } from "react";
-import Link from "next/link";
+import Link from "next/Link";
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { ChevronDownIcon } from "@heroicons/react/solid";
@@ -9,14 +9,16 @@ import COUNTRIES from "../constants/countries";
 
 const Logo = () => (
   <div className="flex justify-start lg:w-0 lg:flex-1">
-    <a href="#">
-      <span className="sr-only">Workflow</span>
-      <img
-        className="h-8 w-auto sm:h-16"
-        src="/logos/white_logo_transparent_background.png"
-        alt=""
-      />
-    </a>
+    <Link href="/">
+      <a>
+        <span className="sr-only">Home</span>
+        <img
+          className="h-8 w-auto sm:h-16"
+          src="/logos/white_logo_transparent_background.png"
+          alt=""
+        />
+      </a>
+    </Link>
   </div>
 );
 
@@ -140,11 +142,13 @@ const MobileMenu = () => (
         <div className="pt-5 pb-6 px-5">
           <div className="flex items-center justify-between">
             <div>
-              <img
-                className="h-10 w-auto"
-                src="/logos/white_logo_transparent_background.png"
-                alt="Workflow"
-              />
+              <Link href="/">
+                <img
+                  className="h-10 w-auto"
+                  src="/logos/white_logo_transparent_background.png"
+                  alt="Workflow"
+                />
+              </Link>
             </div>
             <div className="-mr-2">
               <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
@@ -175,17 +179,16 @@ const MobileMenu = () => (
         </div>
         <div className="py-6 px-5 space-y-6">
           <div>
-            <a
-              href="#"
-              className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
-            >
-              Sign up
-            </a>
+            <Link href="/signup">
+              <a className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
+                Sign up
+              </a>
+            </Link>
             <p className="mt-6 text-center text-base font-medium text-gray-500">
               Existing customer?{" "}
-              <a href="#" className="text-indigo-600 hover:text-indigo-500">
-                Sign in
-              </a>
+              <Link href="/signin">
+                <a className="text-indigo-600 hover:text-indigo-500">Sign in</a>
+              </Link>
             </p>
           </div>
         </div>
@@ -196,18 +199,16 @@ const MobileMenu = () => (
 
 const RightMenu = () => (
   <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-    <a
-      href="#"
-      className="whitespace-nowrap text-base font-medium text-white hover:text-gold"
-    >
-      Sign in
-    </a>
-    <a
-      href="#"
-      className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
-    >
-      Sign up
-    </a>
+    <Link href="/signin">
+      <a className="whitespace-nowrap text-base font-medium text-white hover:text-gold">
+        Sign in
+      </a>
+    </Link>
+    <Link href="/signup">
+      <a className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
+        Sign up
+      </a>
+    </Link>
   </div>
 );
 
@@ -224,11 +225,11 @@ export default function Navbar() {
           <RightMenu />
         </div>
       </div>
-      <div className={`${outterPadding}`}>
+      {/* <div className={`${outterPadding}`}>
         <div className="flex justify-between items-center py-4 md:justify-center md:space-x-10">
           <SubMenuOptions />
         </div>
-      </div>
+      </div> */}
       <MobileMenu />
     </Popover>
   );
