@@ -58,7 +58,6 @@ export const emailVerification = () => sendEmailVerification(auth.currentUser);
 export const updateUser = ({ displayName, phoneNumber, photoURL = "" }) =>
   updateProfile(auth.currentUser, {
     displayName,
-    phoneNumber,
     photoURL,
   });
 

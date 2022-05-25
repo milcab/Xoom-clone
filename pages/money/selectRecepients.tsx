@@ -147,7 +147,11 @@ const AddRecipient = ({ onClose }) => {
   );
 };
 
-const Transaction = ({ onClose, type = "send", recipient = {} }) => {
+const Transaction = ({
+  onClose,
+  type = "send",
+  recipient = {},
+}: Record<string, any>) => {
   const amountRef = useRef(null);
   const formRef = useRef(null);
   const { addTransaction } = useTransaction();
@@ -202,7 +206,7 @@ const Transaction = ({ onClose, type = "send", recipient = {} }) => {
 
 const Home: NextPage = () => {
   const [isModalVisible, setModalVisibility] = useState(false);
-  const { contacts, selectContact } = useContacts();
+  const { contacts } = useContacts();
 
   const contactsList = contacts ? Object.entries(contacts) : [];
 
@@ -238,8 +242,8 @@ const Home: NextPage = () => {
         <h2 className="border-b border-gray-200 mb-4">All Contacts</h2>
 
         <div>
-          {contactsList.map(([contactId, { name, email }]) => (
-            <User name={name} email={email} />
+          {contactsList.map(([contactId, contact]: any[]) => (
+            <User key={contactId} name={contact.name} email={contact.email} />
           ))}
         </div>
       </section>

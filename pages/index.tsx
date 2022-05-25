@@ -11,7 +11,7 @@ const Home: NextPage = () => {
   return (
     <div className="flex items-center">
       <div className="lg:w-0 lg:flex-1 p-12">
-        <h1 className="text-3xl font-bold mb-6">WHAT'S MILCA-TRANSFER?</h1>
+        <h1 className="text-3xl font-bold mb-6">WHAT&apos;S MILCA-TRANSFER?</h1>
         <p className="mb-6">
           Milca-transfer is a great way to send money to friends and family,
           even if they bank somewhere different than you do.1 That means it’s
