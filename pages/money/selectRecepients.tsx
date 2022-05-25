@@ -31,7 +31,7 @@ const User = ({ name, email }) => {
         alt="coin avatar"
         className="w-12 h-12 rounded-full"
       />
-      <div className="flex items-start justify-between w-full">
+      <div className="flex items-start justify-between w-full flex-col md:flex-row">
         <div className="pl-3 w-full">
           <p
             tabIndex={0}
