@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { auth, emailVerification, signUp, signIn, updateUser } from "./app";
+import { getContactsFromCurrentUser, addContact } from "./contacts";
 
 const formatAuthUser = (user) => ({
   uid: user.uid,
@@ -8,6 +9,30 @@ const formatAuthUser = (user) => ({
   phoneNumber: user.phoneNumber,
   photoURL: user.photoURL,
 });
+
+export const useContacts = () => {
+  const [contacts, setContacts] = useState(null);
+  const { authUser } = useFirebaseAuth();
+
+  useEffect(() => {
+    if (authUser) {
+      getContactsFromCurrentUser(authUser, (contacts) => {
+        setContacts(contacts);
+      });
+    }
+  }, [authUser]);
+
+  console.log({
+    contacts,
+  });
+
+  return {
+    contacts,
+    addContact: ({ name, email }: Record<string, string>) => {
+      return addContact({ currentUser: authUser, name, email });
+    },
+  };
+};
 
 export default function useFirebaseAuth() {
   const [authUser, setAuthUser] = useState(null);

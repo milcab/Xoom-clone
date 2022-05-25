@@ -2,9 +2,12 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import useFirebaseAuth from "../firebase/hooks";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
+  const { authUser } = useFirebaseAuth();
+
   return (
     <div className="flex items-center">
       <div className="lg:w-0 lg:flex-1 p-12">
@@ -25,6 +28,12 @@ const Home: NextPage = () => {
             Sign Up
           </button>
         </Link>
+        <p className="mt-6 text-center text-base font-medium text-gray-500">
+          Existing customer?{" "}
+          <Link href="/signin">
+            <a className="text-indigo-600 hover:text-indigo-500">Sign in</a>
+          </Link>
+        </p>
       </div>
       <div className="flex justify-start lg:w-0 lg:flex-1 p-12">
         <img
