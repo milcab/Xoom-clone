@@ -1,5 +1,10 @@
 import React from "react";
-const Modal = ({ children, onCloseHandler }) => {
+const Modal = ({
+  children,
+  onCloseHandler,
+  title = "Enter Contact Details",
+  subTitle = "",
+}) => {
   return (
     <div>
       <div
@@ -29,9 +34,12 @@ const Modal = ({ children, onCloseHandler }) => {
                 <path d="M20 12v4h-4a2 2 0 0 1 0 -4h4" />
               </svg>
             </div>
-            <h1 className="text-gray-800 font-lg font-bold tracking-normal leading-tight mb-4">
-              Enter Contact Details
+            <h1 className="text-gray-800 font-xl font-bold tracking-normal leading-tight mb-4">
+              {title}
             </h1>
+            <h2 className="text-gray-800 font-lg font-bold tracking-normal leading-tight mb-4">
+              {subTitle}
+            </h2>
             <section>{children}</section>
             <div
               className="cursor-pointer absolute top-0 right-0 mt-4 mr-5 text-gray-400 hover:text-gray-600 transition duration-150 ease-in-out"
