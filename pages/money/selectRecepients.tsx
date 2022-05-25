@@ -32,7 +32,7 @@ const User = ({ name, email }) => {
         className="w-12 h-12 rounded-full"
       />
       <div className="flex items-start justify-between w-full flex-col md:flex-row">
-        <div className="pl-3 w-full">
+        <div className="pl-3 w-full mb-4 md:mb-0">
           <p
             tabIndex={0}
             className="focus:outline-none text-xl font-medium leading-5 text-gray-800"
