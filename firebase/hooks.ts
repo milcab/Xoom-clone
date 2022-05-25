@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { auth, emailVerification, signUp, signIn, updateUser } from "./app";
 import { getContactsFromCurrentUser, addContact } from "./contacts";
+import { getTransactionsFromCurrentUser, addTransaction } from "./transactions";
 
 const formatAuthUser = (user) => ({
   uid: user.uid,
@@ -30,6 +31,32 @@ export const useContacts = () => {
     contacts,
     addContact: ({ name, email }: Record<string, string>) => {
       return addContact({ currentUser: authUser, name, email });
+    },
+  };
+};
+
+export const useTransaction = () => {
+  const [transactions, setTransactions] = useState(null);
+  const { authUser } = useFirebaseAuth();
+
+  useEffect(() => {
+    if (authUser) {
+      getTransactionsFromCurrentUser(authUser, (transactions) => {
+        setTransactions(transactions);
+      });
+    }
+  }, [authUser]);
+
+  return {
+    transactions,
+    addTransaction: ({ name, email, type, amount }: Record<string, string>) => {
+      return addTransaction({
+        currentUser: authUser,
+        name,
+        email,
+        type,
+        amount,
+      });
     },
   };
 };

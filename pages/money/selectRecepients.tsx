@@ -3,7 +3,10 @@ import { forwardRef } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/Link";
-import useFirebaseAuth, { useContacts } from "../../firebase/hooks";
+import useFirebaseAuth, {
+  useContacts,
+  useTransaction,
+} from "../../firebase/hooks";
 import { useState } from "react";
 import Modal from "../../components/Modal";
 import { useRef } from "react";
@@ -147,7 +150,7 @@ const AddRecipient = ({ onClose }) => {
 const Transaction = ({ onClose, type = "send", recipient = {} }) => {
   const amountRef = useRef(null);
   const formRef = useRef(null);
-  const { addContact } = useContacts();
+  const { addTransaction } = useTransaction();
   const onFormSubmit = (e) => {
     e.preventDefault();
 
@@ -156,7 +159,7 @@ const Transaction = ({ onClose, type = "send", recipient = {} }) => {
     }
 
     const amount = amountRef.current.value;
-    addContact({ amount }).then(closeModal);
+    addTransaction({ ...recipient, type, amount }).then(closeModal);
   };
   const closeModal = () => {
     formRef.current?.reset();

@@ -11,35 +11,46 @@ import {
 } from "firebase/database";
 
 const database = getDatabase(firebase);
-const TransactionsRef = ref(database, "contacts");
+const TransactionsRef = ref(database, "transactions");
 
-export const addContact = async ({ currentUser, email, name }) => {
+export const addTransaction = async ({
+  currentUser,
+  email,
+  name,
+  type,
+  amount,
+}) => {
   if (!currentUser.uid) return null;
 
   const userTransactionsRef = child(TransactionsRef, currentUser.uid);
   const newKey = push(userTransactionsRef).key || "klk";
 
-  const newContact = {
+  const newTransaction = {
     [newKey]: {
       email,
       name,
+      type,
+      amount,
     },
   };
 
-  return update(userTransactionsRef, newContact);
+  return update(userTransactionsRef, newTransaction);
 };
 
-export const getContactsFromCurrentUser = (currentUser, onNewContacts) => {
+export const getTransactionsFromCurrentUser = (
+  currentUser,
+  onNewTransactions
+) => {
   if (!currentUser.uid) return null;
 
   const userTransactionsRef = child(TransactionsRef, currentUser.uid);
 
   onValue(userTransactionsRef, (snapshot) => {
     if (snapshot.exists()) {
-      onNewContacts(snapshot.val());
+      onNewTransactions(snapshot.val());
     } else {
       console.log("No data available");
-      onNewContacts(null);
+      onNewTransactions(null);
     }
   });
 };
